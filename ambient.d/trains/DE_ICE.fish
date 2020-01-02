@@ -1,4 +1,4 @@
-ambient_is_ssid "WIFIonICE" or exit
+ambient_is_ssid "WIFIonICE"; or exit
 
 curl -s https://iceportal.de/api1/rs/status | jq -r '"
 AMBIENT_DE_ICE_CONNECTION=\(.connection)

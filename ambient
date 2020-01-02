@@ -4,18 +4,8 @@
 set -l ambient_path (dirname (status --current-filename))
 cd $ambient_path
 
-# Make fish autoload our functions before trying built-in ones.
-set -p fish_function_path $ambient_path/functions.d
-
 # Accumulate non-empty KEY=VALUE pairs output from subscripts.
-set -l environment
-for file in ./ambient.d/**/*.fish
-    for line in (source $file)
-        if [ -n "$line" ]
-            set -a environment "$line"
-        end
-    end
-end
+set -l environment (./lib/_dispatch_ambient.fish)
 
 # If arguments are given, call it as a command, with ambient data in the environment.
 if [ (count $argv) -gt 0 ]
