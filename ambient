@@ -5,7 +5,12 @@ set -l ambient_path (dirname (status --current-filename))
 cd $ambient_path
 
 # Accumulate non-empty KEY=VALUE pairs output from subscripts.
-set -l environment (./lib/_dispatch_ambient.fish)
+for kv in (./lib/_dispatch_ambient.fish)
+    if test -z "$kv"
+        continue
+    end
+    set -a environment $kv
+end
 
 # If arguments are given, call it as a command, with ambient data in the environment.
 if [ (count $argv) -gt 0 ]
