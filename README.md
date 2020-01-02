@@ -5,6 +5,16 @@ This is a script which captures ambient information available on certain public 
 
 If you spot a network with some tidbits of information available, please open a PR to add it!
 
+Requirements
+------------
+
+The set of dependencies is intentionally kept small:
+
+- `fish` (the shell)
+- `iw` (to check what network you're on)
+- `jq`
+- The POSIX standard tools, such as `grep` and `sed`
+
 Usage
 -----
 
@@ -41,7 +51,7 @@ AMBIENT_DE_ICE_STOP_NEXT_ARRIVE_ACTUAL=2020-01-02T17:23:00Z
 AMBIENT_DE_ICE_STOP_NEXT_ARRIVE_DELAY=+57
 ```
 
-Running `ambient-widgets` will run the built-in widget scripts (WIP):
+Running `ambient-widgets` will run the built-in widget scripts (WIP, uses Font Awesome):
 
 ```
 $ ./ambient-widgets
@@ -50,15 +60,26 @@ $ ./ambient-widgets
  219 km/h
 ```
 
-Requirements
-------------
+Status bar usage
+----------------
 
-The set of dependencies is intentionally kept small:
+Do you want to see how late your current train is, from the comfort of your status bar? Look no further!
 
-- `fish` (the shell)
-- `iw` (to check what network you're on)
-- `jq`
-- The POSIX standard tools, such as `grep` and `sed`
+### awesomewm (+ vicious)
+
+Create a custom widget which calls the widget script, and replace all newlines with spaces.
+
+```
+myambien = wibox.widget.textbox()
+vicious.register(myambien, function(format, warg)
+    local f = io.popen("echo -n ' '; " .. os.getenv("HOME") .. "/Projects/src/github.com/liclac/ambient/ambient-widgets")
+    local out = f:read("*all")
+    f:close()
+    return { out:gsub('\n', ' ') }
+end, "$1", 31)
+```
+
+Remember to add it to your `wibox` list! Search for `mytextclock` with a default configuration.
 
 Why `fish`? Why not `bash` or `zsh`?
 ------------------------------------
