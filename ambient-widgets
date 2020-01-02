@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+
+# Change to the script's directory for now, it makes things easier.
+set -l ambient_path (dirname (status --current-filename))
+cd $ambient_path
+
+# Use ambient to run the widget dispatcher with data in the environment.
+./ambient ./lib/_dispatch_widgets.fish

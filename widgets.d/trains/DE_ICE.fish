@@ -1,0 +1,9 @@
+if set -q AMBIENT_DE_ICE_STOP_NEXT
+    echo " $AMBIENT_DE_ICE_STOP_NEXT"
+end
+if set -q AMBIENT_DE_ICE_TRAIN_TYPE
+    echo " $AMBIENT_DE_ICE_TRAIN_TYPE-$AMBIENT_DE_ICE_VZN"
+end
+if set -q AMBIENT_DE_ICE_SPEED
+    echo " $AMBIENT_DE_ICE_SPEED km/h"
+end
