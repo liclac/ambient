@@ -7,6 +7,21 @@ cd $ambient_path
 # Make fish autoload our functions before trying built-in ones.
 set -p fish_function_path $ambient_path/functions.d
 
+# Accumulate non-empty KEY=VALUE pairs output from subscripts.
+set -l environment
 for file in ./ambient.d/**/*.fish
-    source $file
+    for line in (source $file)
+        if [ -n "$line" ]
+            set -a environment "$line"
+        end
+    end
+end
+
+# If arguments are given, call it as a command, with ambient data in the environment.
+if [ (count $argv) -gt 0 ]
+    env $environment $argv
+else
+    for kv in $environment
+        echo $kv
+    end
 end
