@@ -81,6 +81,14 @@ end, "$1", 31)
 
 Remember to add it to your `wibox` list! Search for `mytextclock` with a default configuration.
 
+### Bitbar
+
+Link `bitbar/ambient.60s.sh` into your Bitbar plugin directory. 
+
+```
+ln -s $(pwd)/bitbar/ambient.60s.sh ~/.bitbar
+```
+
 Why `fish`? Why not `bash` or `zsh`?
 ------------------------------------
 
