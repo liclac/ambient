@@ -15,4 +15,6 @@ if [ -z "$WIDGET" ]; then
 	echo "🚄"
 else 
 	echo $WIDGET
+	echo "---"
+	echo $(/usr/local/bin/fish $DIR/../ambient | tr '\n' '\r\n')
 fi
