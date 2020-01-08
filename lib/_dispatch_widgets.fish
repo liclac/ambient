@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
-set os (uname)
-if [ $os = "Darwin" ]
+
+if test (uname) = "Darwin"
 	set -g icons 🚏 ⏱ 🚄 💨
 else 
 	set -g icons    
