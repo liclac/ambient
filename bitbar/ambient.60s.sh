@@ -16,5 +16,6 @@ if [ -z "$WIDGET" ]; then
 else 
 	echo $WIDGET
 	echo "---"
+	echo "Go to map|href=https://iceportal.de/karte"
 	echo $(/usr/local/bin/fish $DIR/../ambient | tr '\n' '\r\n')
 fi
