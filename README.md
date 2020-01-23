@@ -1,7 +1,10 @@
-ambience
+ambient
 ========
 
-This is a script which captures ambient information available on certain public networks, such as the route, speed and delay information available on German ICE trains.
+This is a script which captures ambient information available on certain public networks, such as the route, speed and delay information available on:
+- German ICE trains
+- Eurostar
+- Austrian RailJet trains
 
 If you spot a network with some tidbits of information available, please open a PR to add it!
 
