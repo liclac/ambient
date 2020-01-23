@@ -1,10 +1,7 @@
-ambient
+ambience
 ========
 
-This is a script which captures ambient information available on certain public networks, such as the route, speed and delay information available on:
-- German ICE trains
-- Eurostar
-- Austrian RailJet trains
+This is a script which captures ambient information available on certain public networks, such as the route, speed and delay information available on German ICE trains.
 
 If you spot a network with some tidbits of information available, please open a PR to add it!
 
@@ -16,7 +13,7 @@ The set of dependencies is intentionally kept small:
 - `fish` (the shell)
 - `iw` (to check what network you're on)
 - `jq`
-- The POSIX standard tools, such as `grep` and `sed`
+- The POSIX standard tools, such as `grep` and `sed` (On macOS, you'll need to install the GNU coreutils with `brew install coreutils`)
 
 Usage
 -----
