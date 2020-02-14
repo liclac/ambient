@@ -8,6 +8,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 
+PATH="/usr/local/bin:$PATH" # to find Homebrew-installed fish
 
 WIDGET=$(/usr/local/bin/fish $DIR/../ambient-widgets | tr '\n' ' ')
 
