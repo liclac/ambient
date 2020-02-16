@@ -11,15 +11,15 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 PATH="/usr/local/bin:$PATH" # to find Homebrew-installed fish
 
 # look for config file in XDG config dirs
-printf '%s:\0' "${XDG_CONFIG_HOME:-"${HOME}/.config"}:${XDG_CONFIG_DIRS:-/etc/xdg}" | while IFS=: read -d: -r p; do
-    if [ -z "$config_file" ] && [ -r "$p/bitbar/plugins/ambient.json" ]; then
-        config_file="$p/bitbar/plugins/ambient.json"
+while IFS=: read -d: -r p; do
+    if [ -z "$config_path" ] && [ -r "$p/bitbar/plugins/ambient.json" ]; then
+        config_path="$p/bitbar/plugins/ambient.json"
     fi
-done
-if [ -z "$config_file" ]; then
+done <<<$(printf '%s:\0' "${XDG_CONFIG_HOME:-"${HOME}/.config"}:${XDG_CONFIG_DIRS:-/etc/xdg}")
+if [ -z "$config_path" ]; then
     config='{}'
 else
-    config="$(cat "$config_file")"
+    config="$(cat "$config_path")"
 fi
 
 WIDGET=$(/usr/local/bin/fish $DIR/../ambient-widgets | tr '\n' ' ')
