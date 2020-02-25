@@ -16,7 +16,7 @@ The set of dependencies is intentionally kept small:
 - `fish` (the shell)
 - `iw` (to check what network you're on)
 - `jq`
-- The POSIX standard tools, such as `grep` and `sed`
+- The POSIX standard tools, such as `grep` and `sed` (On macOS, you'll need to install the GNU coreutils with `brew install coreutils`)
 
 Usage
 -----
