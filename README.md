@@ -84,13 +84,17 @@ end, "$1", 31)
 
 Remember to add it to your `wibox` list! Search for `mytextclock` with a default configuration.
 
-### Bitbar
+### BitBar
 
-Link `bitbar/ambient.60s.sh` into your Bitbar plugin directory. 
+Link `bitbar/ambient.60s.sh` into your BitBar plugin directory.
 
 ```
 ln -s $(pwd)/bitbar/ambient.60s.sh ~/.bitbar
 ```
+
+You can put a file named `bitbar/plugins/ambient.json` in one of [the usual locations](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) (e.g. `~/.config`) to configure the plugin:
+
+- If `showIfEmpty` is false, the plugin will disappear entirely from your menu bar as long as you're not in a known network. Note that BitBar displays its own menu if none of the plugins are active. (Default: `true`)
 
 Why `fish`? Why not `bash` or `zsh`?
 ------------------------------------
