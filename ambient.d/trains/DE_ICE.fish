@@ -1,6 +1,10 @@
 ambient_is_ssid "WIFI@DB" "WIFIonICE"; or exit
 
-curl -s https://iceportal.de/api1/rs/status | jq -r '"
+set train_status (curl -s https://iceportal.de/api1/rs/status)
+
+echo $train_status | grep -i wagonClass; or exit
+
+echo $train_status | jq -r '"
 AMBIENT_DE_ICE_CONNECTION=\(.connection)
 AMBIENT_DE_ICE_SERVICE_LEVEL=\(.servicelevel)
 AMBIENT_DE_ICE_INTERNET=\(.internet)
