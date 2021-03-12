@@ -1,6 +1,10 @@
-ambient_is_ssid "WIFIonICE"; or exit
+ambient_is_ssid "WIFI@DB" "WIFIonICE"; or exit
 
-curl -s https://iceportal.de/api1/rs/status | jq -r '"
+set train_status (curl -s https://iceportal.de/api1/rs/status)
+
+echo $train_status | jq type >/dev/null 2>&1; or exit
+
+echo $train_status | jq -r '"
 AMBIENT_DE_ICE_CONNECTION=\(.connection)
 AMBIENT_DE_ICE_SERVICE_LEVEL=\(.servicelevel)
 AMBIENT_DE_ICE_INTERNET=\(.internet)
@@ -13,7 +17,6 @@ AMBIENT_DE_ICE_LATITUDE=\(.latitude)
 AMBIENT_DE_ICE_LONGITUDE=\(.longitude)
 AMBIENT_DE_ICE_SERVER_TIME=\(.serverTime / 1000 | round | tostring | strptime("%s") | todate)
 AMBIENT_DE_ICE_WAGON_CLASS=\(.wagonClass)
-AMBIENT_DE_ICE_NAVIGATION_CHANGE=\(.navigationChange | strptime("%Y-%m-%d-%H-%M-%S") | todate)
 AMBIENT_DE_ICE_TRAIN_TYPE=\(.trainType)
 "'
 
