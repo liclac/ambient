@@ -18,6 +18,9 @@ case "SWR WiFi"
 case "VirginTrainsEC-WiFi"
   set ambient_icomera_country GB
   set ambient_icomera_provider "Virgin Trains East Coast"
+case "TPE Wi-Fi"
+  set ambient_icomera_country GB
+  set ambient_icomera_provider "TransPennine Express"
 case "SJ"
   set ambient_icomera_country SE
   set ambient_icomera_provider SJ
