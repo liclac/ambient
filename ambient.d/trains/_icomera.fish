@@ -34,32 +34,32 @@ case "THALYSNET"
   set ambient_icomera_country FR
   set ambient_icomera_provider Thalys
 end
+test -n "$ambient_icomera_provider"; or exit
 
-if test -n $ambient_icomera_provider
-	function ambient_get_icomera_endpoint
-		set url https://www.ombord.info/api/jsonp/$argv/
+function ambient_get_icomera_endpoint
+	set url https://www.ombord.info/api/jsonp/$argv/
 
-		if test (uname) = "Darwin"
-			curl -s $url | tail -c +2 | ghead -c -3
-		else
-			curl -s $url | tail -c +2 | head -c -3
-		end
+	if test (uname) = "Darwin"
+		curl -s $url | tail -c +2 | ghead -c -3
+	else
+		curl -s $url | tail -c +2 | head -c -3
 	end
+end
 
-	echo AMBIENT_ICOMERA_PROVIDER=$ambient_icomera_provider
-	echo AMBIENT_ICOMERA_COUNTRY=$ambient_icomera_country
-	ambient_get_icomera_endpoint position | jq -r '"
+echo AMBIENT_ICOMERA_PROVIDER=$ambient_icomera_provider
+echo AMBIENT_ICOMERA_COUNTRY=$ambient_icomera_country
+ambient_get_icomera_endpoint position | jq -r '"
 AMBIENT_ICOMERA_POSITION_LONGITUDE=\(.longitude)
 AMBIENT_ICOMERA_POSITION_LATITUDE=\(.latitude)
 AMBIENT_ICOMERA_POSITION_ALTITUDE=\(.altitude)
 AMBIENT_ICOMERA_POSITION_SPEED=\(.speed)
 AMBIENT_ICOMERA_POSITION_SATELLITES=\(.satellites)
 "'
-	ambient_get_icomera_endpoint users | jq -r '"
+ambient_get_icomera_endpoint users | jq -r '"
 AMBIENT_ICOMERA_USERS_TOTAL=\(.total)
 AMBIENT_ICOMERA_USERS_ONLINE=\(.online)
 "'
-	ambient_get_icomera_endpoint user | jq -r '"
+ambient_get_icomera_endpoint user | jq -r '"
 AMBIENT_ICOMERA_USER_DATA_DOWNLOAD_USED=\(.data_download_used)
 AMBIENT_ICOMERA_USER_DATA_UPLOAD_USED=\(.data_upload_used)
 AMBIENT_ICOMERA_USER_DATA_TOTAL_USED=\(.data_total_used)
@@ -76,4 +76,3 @@ AMBIENT_ICOMERA_USER_ONLINE=\(.online)
 AMBIENT_ICOMERA_USER_CAP_LEVEL=\(.cap_level)
 AMBIENT_ICOMERA_USER_AUTHENTICATED=\(.authenticated)
 "'
-end
