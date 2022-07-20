@@ -74,6 +74,8 @@ Do you want to see how late your current train is, from the comfort of your stat
 [[block]]
 block = "custom"
 command = "/path/to/ambient/ambient-widgets | tr '\n' ' '"
+interval = 120
+hide_when_empty = true
 ```
 
 ### awesomewm (+ vicious)
