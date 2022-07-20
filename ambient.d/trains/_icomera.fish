@@ -27,9 +27,6 @@ case "SJ"
 case "Irish Rail - WiFi"
   set ambient_icomera_country IE
   set ambient_icomera_provider "Irish Rail"
-case "WIFIonICE"
-  set ambient_icomera_country DE
-  set ambient_icomera_provider "Deutsche Bahn"
 case "THALYSNET"
   set ambient_icomera_country FR
   set ambient_icomera_provider Thalys
