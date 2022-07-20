@@ -32,7 +32,7 @@ case "WIFIonICE"
   set ambient_icomera_provider "Deutsche Bahn"
 case "THALYSNET"
   set ambient_icomera_country FR
-  set ambient_icomera_country Thalys
+  set ambient_icomera_provider Thalys
 end
 
 if test -n $ambient_icomera_provider
