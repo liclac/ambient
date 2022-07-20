@@ -13,7 +13,6 @@ AMBIENT_DE_ICE_LATITUDE=\(.latitude)
 AMBIENT_DE_ICE_LONGITUDE=\(.longitude)
 AMBIENT_DE_ICE_SERVER_TIME=\(.serverTime / 1000 | round | tostring | strptime("%s") | todate)
 AMBIENT_DE_ICE_WAGON_CLASS=\(.wagonClass)
-AMBIENT_DE_ICE_NAVIGATION_CHANGE=\(.navigationChange | strptime("%Y-%m-%d-%H-%M-%S") | todate)
 AMBIENT_DE_ICE_TRAIN_TYPE=\(.trainType)
 "'
 
