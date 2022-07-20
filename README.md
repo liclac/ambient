@@ -68,6 +68,14 @@ Status bar usage
 
 Do you want to see how late your current train is, from the comfort of your status bar? Look no further!
 
+### i3status-rs
+
+```
+[[block]]
+block = "custom"
+command = "/path/to/ambient/ambient-widgets | tr '\n' ' '"
+```
+
 ### awesomewm (+ vicious)
 
 Create a custom widget which calls the widget script, and replace all newlines with spaces.
@@ -75,7 +83,7 @@ Create a custom widget which calls the widget script, and replace all newlines w
 ```
 myambien = wibox.widget.textbox()
 vicious.register(myambien, function(format, warg)
-    local f = io.popen("echo -n ' '; " .. os.getenv("HOME") .. "/Projects/src/github.com/liclac/ambient/ambient-widgets")
+    local f = io.popen("echo -n ' '; " .. os.getenv("HOME") .. "/path/to/ambient/ambient-widgets")
     local out = f:read("*all")
     f:close()
     return { out:gsub('\n', ' ') }
