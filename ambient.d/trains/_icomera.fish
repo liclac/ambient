@@ -1,3 +1,6 @@
+set ambient_icomera_country ""
+set ambient_icomera_provider ""
+
 set -l ssid (ambient_get_ssid)
 switch $ssid
 case "GatwickExpress_WiFi"

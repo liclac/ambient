@@ -4,7 +4,11 @@ ambient_is_ssid "WIFIonICE" "WIFI@DB"; or exit
 # We can tell if we're on a train if iceportal.de resolves to a private IP addr.
 string match '172.*' (ambient_resolve4 iceportal.de) >/dev/null; or exit
 
-curl -s https://iceportal.de/api1/rs/status | jq -r '"
+set train_status (curl -s https://iceportal.de/api1/rs/status)
+
+echo $train_status | jq type >/dev/null 2>&1; or exit
+
+echo $train_status | jq -r '"
 AMBIENT_DE_ICE_CONNECTION=\(.connection)
 AMBIENT_DE_ICE_SERVICE_LEVEL=\(.servicelevel)
 AMBIENT_DE_ICE_INTERNET=\(.internet)
