@@ -1,4 +1,8 @@
-ambient_is_ssid "WIFI@DB" "WIFIonICE"; or exit
+ambient_is_ssid "WIFIonICE" "WIFI@DB"; or exit
+
+# Some ICEs use the SSID "WIFI@DB", but that's also used at stations in Germany.
+# We can tell if we're on a train if iceportal.de resolves to a private IP addr.
+string match '172.*' (ambient_resolve4 iceportal.de) >/dev/null; or exit
 
 set train_status (curl -s https://iceportal.de/api1/rs/status)
 
