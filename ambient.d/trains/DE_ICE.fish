@@ -22,7 +22,7 @@ echo $train_status | jq -r '{
     "AMBIENT_DE_ICE_SERVER_TIME": (.serverTime / 1000 | round | tostring | strptime("%s") | todate),
     "AMBIENT_DE_ICE_WAGON_CLASS": (.wagonClass),
     "AMBIENT_DE_ICE_TRAIN_TYPE": (.trainType),
-} | to_entries | map(.key + "=" + (.value | tostring)) | join("\n")'
+} | to_entries | map(select(.value != null)) | map(.key + "=" + (.value | tostring)) | join("\n")'
 
 curl -s https://iceportal.de/api1/rs/tripInfo/trip | jq -r '{
     "AMBIENT_DE_ICE_TRIP_DATE": .trip.tripDate,
@@ -48,4 +48,4 @@ curl -s https://iceportal.de/api1/rs/tripInfo/trip | jq -r '{
     "AMBIENT_DE_ICE_STOP_NEXT_ARRIVE_SCHEDULED": (([.trip.stops[] | select(.info.passed == false)] | first).timetable.scheduledArrivalTime  / 1000 | round | tostring | strptime("%s") | todate),
     "AMBIENT_DE_ICE_STOP_NEXT_ARRIVE_ACTUAL": (([.trip.stops[] | select(.info.passed == false)] | first).timetable.actualArrivalTime/ 1000 | round | tostring | strptime("%s") | todate),
     "AMBIENT_DE_ICE_STOP_NEXT_ARRIVE_DELAY": ([.trip.stops[] | select(.info.passed == false)] | first).timetable.arrivalDelay,
-} else {} end | to_entries | map(.key + "=" + (.value | tostring)) | join("\n")'
+} else {} end | to_entries | map(select(.value != null)) | map(.key + "=" + (.value | tostring)) | join("\n")'
