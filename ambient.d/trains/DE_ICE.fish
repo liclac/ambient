@@ -1,10 +1,7 @@
 ambient_is_ssid "WIFIonICE" "WIFI@DB"; or exit
 
 # Some ICEs use the SSID "WIFI@DB", but that's also used at stations in Germany.
-# We can tell if we're on a train if iceportal.de resolves to a private IP addr.
-string match '172.*' (ambient_resolve4 iceportal.de) >/dev/null; or exit
-
-# Also double-check that the API returns valid JSON, also not the case at stations.
+# Check that we can actually reach the status API and get valid JSON back.
 set train_status (curl -s https://iceportal.de/api1/rs/status)
 echo $train_status | jq type >/dev/null 2>&1; or exit
 
