@@ -52,7 +52,7 @@ ambient_get_icomera_endpoint position | jq -r '"
 AMBIENT_ICOMERA_POSITION_LONGITUDE=\(.longitude)
 AMBIENT_ICOMERA_POSITION_LATITUDE=\(.latitude)
 AMBIENT_ICOMERA_POSITION_ALTITUDE=\(.altitude)
-AMBIENT_ICOMERA_POSITION_SPEED=\(.speed)
+AMBIENT_ICOMERA_POSITION_SPEED=\((.speed | tonumber)*60*60/1000 | round)
 AMBIENT_ICOMERA_POSITION_SATELLITES=\(.satellites)
 "'
 ambient_get_icomera_endpoint users | jq -r '"
