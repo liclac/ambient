@@ -10,7 +10,7 @@ end
 if set -q AMBIENT_DE_ICE_TRAIN_TYPE
 	echo -n "🚄 $AMBIENT_DE_ICE_TRAIN_TYPE"
 	# If iceportal.de is having a moment, we may not have the train number.
-	set -q AMBIENT_DE_ICE_VZN; and echo -n "-$AMBIENT_DE_ICE_VZN"
+	set -q AMBIENT_DE_ICE_VZN; and echo -n " $AMBIENT_DE_ICE_VZN"
 	echo
 end
 if set -q AMBIENT_DE_ICE_SPEED
