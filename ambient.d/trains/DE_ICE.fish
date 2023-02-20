@@ -10,6 +10,7 @@ echo $train_status | jq type >/dev/null 2>&1; or exit
 
 echo $train_status | jq -r '{
     "AMBIENT_DE_ICE_CONNECTION": (.connection),
+    "AMBIENT_DE_ICE_CONNECTIVITY_STATE": (.connectivity.currentState),
     "AMBIENT_DE_ICE_SERVICE_LEVEL": (.servicelevel),
     "AMBIENT_DE_ICE_INTERNET": (.internet),
     "AMBIENT_DE_ICE_SPEED": (.speed),
