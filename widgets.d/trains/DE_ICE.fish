@@ -16,3 +16,11 @@ end
 if set -q AMBIENT_DE_ICE_SPEED
 	echo "💨 $AMBIENT_DE_ICE_SPEED km/h"
 end
+switch "$AMBIENT_DE_ICE_CONNECTIVITY_STATE"
+    case 'HIGH'
+        echo "📶 💯"
+    case 'WEAK'
+        echo "📶️ ♒"
+    case 'UNSTABLE'
+        echo "📶 〰️"
+end
