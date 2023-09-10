@@ -23,4 +23,6 @@ switch "$AMBIENT_DE_ICE_CONNECTIVITY_STATE"
         echo "📶️ ♒"
     case 'UNSTABLE'
         echo "📶 〰️"
+    case 'NO_INFO'
+        # :(
 end
