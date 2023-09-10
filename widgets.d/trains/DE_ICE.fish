@@ -18,7 +18,7 @@ if set -q AMBIENT_DE_ICE_SPEED
 end
 switch "$AMBIENT_DE_ICE_CONNECTIVITY_STATE"
     case 'HIGH'
-        echo "📶 💯"
+        echo "📶 🛜"
     case 'WEAK'
         echo "📶️ ♒"
     case 'UNSTABLE'
